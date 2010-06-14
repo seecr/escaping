@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 ## begin license ##
 #
-#    Escaping contains escaping functions for escaping filenames etc.
+#    Escaping is a collection of functions for escaping filenames etc.
 #
-#    Copyright (C) 2006-2008 Seek You Too B.V. (CQ2) http://www.cq2.nl
+#    Copyright (C) 2006-2010 Seek You Too B.V. (CQ2) http://www.cq2.nl
 #
 #    This file is part of Escaping.
 #

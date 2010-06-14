@@ -1,4 +1,3 @@
-# -*- encoding: UTF-8
 ## begin license ##
 #
 #    Escaping is a collection of functions for escaping filenames etc.
@@ -23,32 +22,4 @@
 #
 ## end license ##
 
-from unittest import TestCase
-
-from escaping import escapeFilename
-
-from os.path import join, isfile
-from os import remove
-
-class EscapeTest(TestCase):
-
-    def testStrangeCharactersInName(self):
-        self.assertName('~!@# $%^&*()\t_<>+\\\f\n\/{}[-]ç«»\'´`äëŝÄ')
-        self.assertName('---------')
-        self.assertName('sudo rm -rf /*')
-        self.assertName('version,v')
-        self.assertName('..')
-        self.assertName('.')
-
-    def assertName(self, name):
-        fname = join( '/tmp', escapeFilename(name))
-        open(fname, 'w').close()
-        print fname
-        try:
-            self.assertTrue(isfile(fname))
-        finally:
-            remove(fname)
-
-    def testEmptyName(self):
-        self.assertRaises(ValueError, escapeFilename, '')
-
+raise NotImplementedError
