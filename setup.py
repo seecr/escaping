@@ -22,4 +22,17 @@
 #
 ## end license ##
 
-raise NotImplementedError
+from distutils.core import setup
+
+setup(
+    name='escaping',
+    packages=['escaping'],
+    version='%VERSION%',
+    url='http://www.cq2.nl',
+    author='Seek You Too',
+    author_email='info@cq2.nl',
+    description='A collection of routines to escape identifiers',
+    long_description='A collection of routines to escape identifiers.',
+    license='GNU Public License',
+    platforms='all',
+)
