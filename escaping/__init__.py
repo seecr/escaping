@@ -3,6 +3,7 @@
 #    Escaping is a collection of functions for escaping filenames etc.
 #
 #    Copyright (C) 2006-2010 Seek You Too B.V. (CQ2) http://www.cq2.nl
+#    Copyright (C) 2012 Seecr (Seek You Too B.V.) http://seecr.nl
 #
 #    This file is part of Escaping.
 #
@@ -22,4 +23,5 @@
 #
 ## end license ##
 
-from escaping import escapeFilename, unescapeFilename
+from escaping import escapeFilename, unescapeFilename, bashEscape
+
