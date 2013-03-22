@@ -1,9 +1,8 @@
-# -*- encoding: UTF-8
+#!/bin/bash
 ## begin license ##
 #
 # Escaping is a collection of functions for escaping filenames etc.
 #
-# Copyright (C) 2006-2010 Seek You Too B.V. (CQ2) http://www.cq2.nl
 # Copyright (C) 2013 Seecr (Seek You Too B.V.) http://seecr.nl
 #
 # This file is part of "Escaping"
@@ -24,31 +23,19 @@
 #
 ## end license ##
 
-from unittest import TestCase
 
-from escaping import escapeFilename
-
-from os.path import join, isfile
-from os import remove
-
-class EscapeTest(TestCase):
-
-    def testStrangeCharactersInName(self):
-        self.assertName('~!@# $%^&*()\t_<>+\\\f\n\/{}[-]ç«»\'´`äëŝÄ')
-        self.assertName('---------')
-        self.assertName('sudo rm -rf /*')
-        self.assertName('version,v')
-        self.assertName('..')
-        self.assertName('.')
-
-    def assertName(self, name):
-        fname = join( '/tmp', escapeFilename(name))
-        open(fname, 'w').close()
-        try:
-            self.assertTrue(isfile(fname))
-        finally:
-            remove(fname)
-
-    def testEmptyName(self):
-        self.assertRaises(ValueError, escapeFilename, '')
-
+export LANG=en_US.UTF-8
+export PYTHONPATH=.:"$PYTHONPATH"
+pyversions="python2.6"
+if [ -e /usr/bin/python2.7 ]; then
+    pyversions="$pyversions python2.7"
+fi
+if [ "${option:0:10}" == "--python2." ]; then
+    shift
+    pyversions="${option:2}"
+fi
+echo Found Python versions: $pyversions
+for pycmd in $pyversions; do
+    echo "================ $t with $pycmd _alltests.py $@ ================"
+    $pycmd _alltests.py "$@"
+done

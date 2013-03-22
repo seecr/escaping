@@ -1,9 +1,7 @@
-# -*- encoding: UTF-8
 ## begin license ##
 #
 # Escaping is a collection of functions for escaping filenames etc.
 #
-# Copyright (C) 2006-2010 Seek You Too B.V. (CQ2) http://www.cq2.nl
 # Copyright (C) 2013 Seecr (Seek You Too B.V.) http://seecr.nl
 #
 # This file is part of "Escaping"
@@ -24,31 +22,29 @@
 #
 ## end license ##
 
-from unittest import TestCase
+set -o errexit
+rm -rf tmp build
+mydir=$(cd $(dirname $0); pwd)
+source /usr/share/seecr-test/functions
 
-from escaping import escapeFilename
+pyversions="2.6"
+if distro_is_debian_wheezy; then
+    pyversions="2.6 2.7"
+fi
 
-from os.path import join, isfile
-from os import remove
+VERSION="x.y.z"
 
-class EscapeTest(TestCase):
+for pyversion in $pyversions; do
+    definePythonVars $pyversion
+    echo "###### $pyversion, $PYTHON"
+    ${PYTHON} setup.py install --root tmp
+done
+cp -r test tmp/test
+removeDoNotDistribute tmp
+find tmp -name '*.py' -exec sed -r -e "
+    s/\\\$Version:[^\\\$]*\\\$/\\\$Version: ${VERSION}\\\$/;
+    " -i '{}' \;
 
-    def testStrangeCharactersInName(self):
-        self.assertName('~!@# $%^&*()\t_<>+\\\f\n\/{}[-]ç«»\'´`äëŝÄ')
-        self.assertName('---------')
-        self.assertName('sudo rm -rf /*')
-        self.assertName('version,v')
-        self.assertName('..')
-        self.assertName('.')
-
-    def assertName(self, name):
-        fname = join( '/tmp', escapeFilename(name))
-        open(fname, 'w').close()
-        try:
-            self.assertTrue(isfile(fname))
-        finally:
-            remove(fname)
-
-    def testEmptyName(self):
-        self.assertRaises(ValueError, escapeFilename, '')
-
+cp -r test tmp/test
+runtests "$@"
+rm -rf tmp build
