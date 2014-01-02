@@ -24,7 +24,7 @@
 ## end license ##
 from re import compile
 
-BAD_CHARS = map(chr, range(32)) + ['/', '%', ',']
+BAD_CHARS = list(map(chr, list(range(32)))) + ['/', '%', ',']
 FIND_BAD_CHARS = compile('(^\.|' + '|'.join(BAD_CHARS)+')')
 CHAR_TO_HEX = lambda x: '%%%02X' % ord(x.group(1))
 

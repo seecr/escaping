@@ -23,5 +23,5 @@
 #
 ## end license ##
 
-from escaping import escapeFilename, unescapeFilename, bashEscape
+from .escaping import escapeFilename, unescapeFilename, bashEscape
 
