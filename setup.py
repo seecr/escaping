@@ -3,7 +3,7 @@
 # Escaping is a collection of functions for escaping filenames etc.
 #
 # Copyright (C) 2006-2010 Seek You Too B.V. (CQ2) http://www.cq2.nl
-# Copyright (C) 2013 Seecr (Seek You Too B.V.) http://seecr.nl
+# Copyright (C) 2013, 2020 Seecr (Seek You Too B.V.) https://seecr.nl
 #
 # This file is part of "Escaping"
 #
@@ -29,7 +29,7 @@ setup(
     name='escaping',
     packages=['escaping'],
     version='%VERSION%',
-    url='http://seecr.nl',
+    url='https://seecr.nl',
     author='Seecr',
     author_email='info@seecr.nl',
     description='A collection of routines to escape identifiers',

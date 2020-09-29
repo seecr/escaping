@@ -1,30 +1,31 @@
 ## begin license ##
 #
-#    Escaping is a collection of functions for escaping filenames etc.
+# Escaping is a collection of functions for escaping filenames etc.
 #
-#    Copyright (C) 2006-2010 Seek You Too B.V. (CQ2) http://www.cq2.nl
-#    Copyright (C) 2012 Seecr (Seek You Too B.V.) http://seecr.nl
+# Copyright (C) 2006-2010 Seek You Too B.V. (CQ2) http://www.cq2.nl
+# Copyright (C) 2012, 2020 Seecr (Seek You Too B.V.) https://seecr.nl
 #
-#    This file is part of Escaping.
+# This file is part of "Escaping"
 #
-#    Escaping is free software; you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation; either version 2 of the License, or
-#    (at your option) any later version.
+# "Escaping" is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
 #
-#    Escaping is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
+# "Escaping" is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-#    You should have received a copy of the GNU General Public License
-#    along with Storage; if not, write to the Free Software
-#    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+# You should have received a copy of the GNU General Public License
+# along with "Escaping"; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 ## end license ##
+
 from re import compile
 
-BAD_CHARS = map(chr, range(32)) + ['/', '%', ',']
+BAD_CHARS = [chr(c) for c in range(32)] + ['/', '%', ',']
 FIND_BAD_CHARS = compile('(^\.|' + '|'.join(BAD_CHARS)+')')
 CHAR_TO_HEX = lambda x: '%%%02X' % ord(x.group(1))
 

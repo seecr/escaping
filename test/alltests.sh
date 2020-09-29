@@ -3,7 +3,7 @@
 #
 # Escaping is a collection of functions for escaping filenames etc.
 #
-# Copyright (C) 2013 Seecr (Seek You Too B.V.) http://seecr.nl
+# Copyright (C) 2013, 2020 Seecr (Seek You Too B.V.) https://seecr.nl
 #
 # This file is part of "Escaping"
 #
@@ -27,4 +27,4 @@
 export LANG=en_US.UTF-8
 export PYTHONPATH=.:"$PYTHONPATH"
 
-python2 _alltests.py "$@"
+python3 _alltests.py "$@"
