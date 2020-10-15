@@ -2,7 +2,7 @@
 #
 # Escaping is a collection of functions for escaping filenames etc.
 #
-# Copyright (C) 2013 Seecr (Seek You Too B.V.) https://seecr.nl
+# Copyright (C) 2013, 2020 Seecr (Seek You Too B.V.) https://seecr.nl
 #
 # This file is part of "Escaping"
 #
