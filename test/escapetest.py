@@ -34,7 +34,7 @@ from os import remove
 class EscapeTest(TestCase):
 
     def testStrangeCharactersInName(self):
-        self.assertName('~!@# $%^&*()\t_<>+\\\f\n\/{}[-]ç«»\'´`äëŝÄ')
+        self.assertName(r'~!@# $%^&*()\t_<>+\\\f\n\/{}[-]ç«»\'´`äëŝÄ')
         self.assertName('---------')
         self.assertName('sudo rm -rf /*')
         self.assertName('version,v')

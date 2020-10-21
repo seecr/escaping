@@ -26,7 +26,7 @@
 from re import compile
 
 BAD_CHARS = [chr(c) for c in range(32)] + ['/', '%', ',']
-FIND_BAD_CHARS = compile('(^\.|' + '|'.join(BAD_CHARS)+')')
+FIND_BAD_CHARS = compile(r'(^\.|' + '|'.join(BAD_CHARS)+')')
 CHAR_TO_HEX = lambda x: '%%%02X' % ord(x.group(1))
 
 HEX_TO_CHAR = lambda x:chr(int(x.group(1),16))
